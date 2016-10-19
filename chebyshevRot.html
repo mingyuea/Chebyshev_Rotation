@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="wrapper">
+            <h1>Chebyshev Rotation</h1>
+            <div id="intro">
+                <p>This was another problem I saw on Code-Golf, and the very first I attempted to golf myself. The problem explains that a in a regular grid, where each cell has integer x and y coordinates, cells that have the same Chebyshev distance from the origin can be grouped into "rings", as shown below.
+                <br>
+                <section id="problem">
+                    <img src="chebRot.png"> 
+                </section>
+                <br>
+                The problem then asks that you write the function such that given a cell coordinate, you rotate the ring counter-clockwise one time within its "ring".
+                I wrote my Chebyshev Rotation with the intent on writing as less code as possible. The result was a somewhat short two lines of code:<br>
+                <br> (Math.max(a,b)==Math.max(Math.abs(a),Math.abs(b)))&&(a!=-Math.abs(b))?(a>b)?(b++):(a--):(a>=b)?(a++):(b--);
+                <br>
+                return [a,b];
+                <br>
+                <br>
+                    The code was indeed golfed, although it is nowhere near the shortest answers provided by golfers on Code Golf (most of whom had codes less than 100 bytes). Their answers can be viewed <a href="http://codegolf.stackexchange.com/questions/96410/chebyshev-rotation">here</a> along with the answer. Nontheless, this was my best attempt so far at this problem. I chose not to use shortcuts (such as the arrow function => for creation of functions) that only exist in ECMAScript 2015 (ES6), as many browsers don't yet support it. Feel free to view my code and give me any critiques on how I could've written my code shorter or better!
+                </p>
+            </div>
+            <p>Enter the X coord:</p><input type="number" id="xcoord" name="coord1"><br>
+            <p>Enter the Y coord:</p><input type="number" id="ycoord" name="coord2">
+            <button onclick="assignVal()">Rotate</button>
+            <div id="demo"></div>
+        </div>
+        <script>
+            var x, y;
+            function assignVal(){
+                x=document.getElementById("xcoord").value;
+                y=document.getElementById("ycoord").value;
+                chebRot(x,y);
+                document.getElementById("demo").innerHTML=chebRot(x,y);
+            }
+            
+            
+            function chebRot(a,b){
+                (Math.max(a,b)==Math.max(Math.abs(a),Math.abs(b)))&&(a!=-Math.abs(b))?(a>b)?(b++):(a--):(a>=b)?(a++):(b--);
+                return [a,b];
+                }
+            
+        </script>
+    </body>
+</html>
